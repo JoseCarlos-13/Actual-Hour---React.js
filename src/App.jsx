@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import moment from 'moment'
+import {format} from 'date-fns'
 import Landscape from './components/Landscape/Landscape'
 
 export default  () => {
@@ -9,10 +9,9 @@ export default  () => {
   let [actualHourMoment, setActualHourMoment] = useState('')
   
   const theActualHourAndPeriod = () => {
-    let actual = new Date()
-    let hour = actual.getHours()
-    const morning = hour >= 5 && hour < 13
-    const afternoon = hour >= 13 && hour < 18
+    let time = new Date()
+    const morning = time.getHours() >= 5 && time.getHours() < 13
+    const afternoon = time.getHours() >= 13 && time.getHours() < 18
 
     if (morning) {
       document.body.style.backgroundColor = 'lightBlue'
@@ -31,8 +30,8 @@ export default  () => {
 
   const reloadHour = () => {
     setTimeout(() => {
-      setActualHourMoment(moment().format('HH:mm:ss'))
-      document.title = `${moment().format('HH:mm:ss')} - Hora atual`
+      setActualHourMoment(format(new Date(), 'HH:mm:ss'))
+      document.title = `${format(new Date(), 'HH:mm:ss')} - Hora atual`
       }, 1000)
   }
 
