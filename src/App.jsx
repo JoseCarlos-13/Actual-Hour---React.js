@@ -46,8 +46,8 @@ export default  () => {
         <span>
             <h2>Hora atual: {actualHourMoment} - Período: {period}</h2>
         </span>
-        
-          <Landscape image={landscape}/>
+
+        <Landscape image={landscape}/>
       </div>
     </>
   )
